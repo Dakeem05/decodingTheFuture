@@ -6,6 +6,12 @@ body {
   background: linear-gradient(120.52deg, #0F1141 1%, #272CA7 100%);
 }
 
+@layer base {
+  h1 {
+    @apply font-xeroda text-4xl md:text-7xl text-balance
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
