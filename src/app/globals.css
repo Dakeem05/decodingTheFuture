@@ -8,7 +8,7 @@ body {
 
 @layer base {
   h1 {
-    @apply font-xeroda text-4xl md:text-7xl text-balance
+    @apply font-xeroda text-4xl md:text-6xl text-balance
   }
 }
 
