@@ -23,7 +23,7 @@ export default function Home() {
             <br className="hidden md:block" /> coming soon
           </h1>
           <p className="md:w-[450px] text-center lg:text-left text-white font-xeroda my-5">
-            Decoding the Future is a 5-Day event is designed to empower aspiring
+            Decoding the Future is a 5-Day event designed to empower aspiring
             tech enthusiasts and future leaders through immersive workshops and
             conference on AI/XR & IoT, Blockchain, Cybersecurity, Career &
             Finance.
