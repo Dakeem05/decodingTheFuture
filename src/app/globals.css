@@ -4,7 +4,11 @@
 
 body {
   background: linear-gradient(120.52deg, #0F1141 1%, #272CA7 100%);
+  background-repeat: no-repeat;
+  height: 100%;
 }
+
+
 
 @layer base {
   h1 {
@@ -15,5 +19,13 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  .mobile-bg {
+    background-image: url("../../public/assets/vr.png");
+    background-size: contain;
+    background-repeat: no-repeat;
   }
 }

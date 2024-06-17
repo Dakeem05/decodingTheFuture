@@ -5,14 +5,29 @@ import { BsTwitterX } from "react-icons/bs";
 
 export default function Home() {
   return (
-    <main className="max-h-screen overflow-hidden max-w-screen-lg mx-auto">
-      <header className="md:h-[5vh] py-3 px-3 md:px-0">
-        <img src="/assets/logo.svg" alt="Woman in Virtual Reality" className="object-cover h-7 md:h-12"/>
+    <main className="min-h-screen max-w-[1100px] mx-auto">
+      <header className="py-3 px-3 md:px-0">
+        <img
+          src="/assets/logo.svg"
+          alt="logo"
+          width={150}
+          height={25}
+        />
       </header>
-      <div className="flex min-h-screen lg:max-h-[95vh] items-center justify-center lg:justify-between">
-        <div className="px-3 md:px-0">
-          <h1 className="text-white text-center lg:text-left">We are coming soon</h1>
-          <p className="md:w-[450px] text-center lg:text-left text-white font-xeroda my-3">Decoding the Future is a 5-Day event is designed to empower aspiring tech enthusiasts and future leaders through immersive workshops and conference on AI/XR & IoT, Blockchain, Cybersecurity, Career & Finance.</p>
+
+      <div className="flex items-center md:pt-0 lg:justify-between md:mt-10">
+        <div className="mobile-bg md:mobile-bg-remove">
+          <div className="backdrop-blur-md md:backdrop-blur-0 py-5 px-3 md:px-0">
+          <h1 className="text-white text-center lg:text-left">
+            We are
+            <br className="hidden md:block" /> coming soon
+          </h1>
+          <p className="md:w-[450px] text-center lg:text-left text-white font-xeroda my-5">
+            Decoding the Future is a 5-Day event is designed to empower aspiring
+            tech enthusiasts and future leaders through immersive workshops and
+            conference on AI/XR & IoT, Blockchain, Cybersecurity, Career &
+            Finance.
+          </p>
           <form action="" className="w-[291px] mx-auto lg:mx-0">
             <InputBox type="text" placeholder="Name" />
             <InputBox type="email" placeholder="Email Address" />
@@ -27,12 +42,14 @@ export default function Home() {
             <FaInstagram className="w-5 h-5 cursor-pointer" />
             <FaLinkedin className="w-5 h-5 cursor-pointer" />
           </div>
+          </div>
         </div>
-        <div className="w-2/3 hidden lg:block min-h-screen 2xl:flex items-center relative">
+
+        <div className="w-2/3 hidden lg:block 2xl:flex items-center relative">
           <img
             src="/assets/vr.png"
             alt="Woman in Virtual Reality"
-            className="object-cover w-[558px] block absolute 2xl:relative bottom-0 right-0"
+            className="object-cover w-[558px] h-full block ml-auto"
           />
         </div>
       </div>
