@@ -14,7 +14,7 @@ export default function Home() {
 
       <div className="flex items-center md:pt-0 lg:justify-between md:mt-10">
         <div className="md:mobile-bg-remove">
-          <div className="py-5 h-[90vh] md:h-auto px-3 md:px-0">
+          <div className="py-5 h-screen md:h-auto px-3 md:px-0">
             <h1 className="text-white text-center lg:text-left">
               We are
               <br className="hidden md:block" /> coming soon
