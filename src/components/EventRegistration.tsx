@@ -30,6 +30,7 @@ export default function EventRegistration() {
 
       if (!response.ok) {
         throw new Error(`HTTP error status: ${response.status}`);
+        throw new Error(`HTTP error messa: ${response.json()}`);
       }
 
       const result = await response.json();
