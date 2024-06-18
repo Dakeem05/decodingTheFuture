@@ -1,38 +1,27 @@
-name: Deploy to FTP
+name: Deploy Next.js App via FTP
 
 on:
   push:
     branches:
-      - main  # Adjust the branch name if needed
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14.21.2  # Use the desired Node.js version
+      - name: Install dependencies
+        run: npm install
 
-      - name: Install dependencies and build Next.js app
-        run: |
-          npm install  # Install project dependencies
-          # touch .env.local
-          # echo MONGO_URL=${{ secrets.MONGO_URL }} >> .env.local
-          # echo JWT_SECRET=${{ secrets.JWT_SECRET }} >> .env.local
-          npm build  # Build Next.js app
+      - name: Build the project
+        run: npm run build
 
-      - name: Deploy via FTPS
+      - name: Deploy to FTP server
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./  # This points to the build output directory of your Next.js app
           server-dir: /
-          protocol: ftps
-          timeout: 300000  # Set a longer timeout value in milliseconds (here, 2 minutes)
