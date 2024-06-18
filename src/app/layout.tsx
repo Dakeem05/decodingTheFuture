@@ -32,6 +32,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+      <meta name="csrf-token" content="{csrf_token()}"/>
+      </head>
       <body className={`${xeroda.variable} ${montserrat.className}`}>
         <Navbar />
         {children}
