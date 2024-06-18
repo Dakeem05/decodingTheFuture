@@ -8,8 +8,6 @@ body {
   height: 100%;
 }
 
-
-
 @layer base {
   h1 {
     @apply font-xeroda text-4xl md:text-6xl text-balance
@@ -22,7 +20,7 @@ body {
   }
 }
 
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: 1024px) {
   .mobile-bg {
     background-image: url("../../public/assets/vr.png");
     background-size: cover;

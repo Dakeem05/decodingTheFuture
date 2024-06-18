@@ -2,24 +2,23 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import localfont from "next/font/local";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
 
 const montserrat = Montserrat({
-  weight: ['300', '400', '500', '700'],
-  subsets: ['latin'],
-  display: 'swap',
-  fallback: ['Arial', 'sans-serif'],
- });
-
+  weight: ["300", "400", "500", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  fallback: ["Arial", "sans-serif"],
+});
 
 const xeroda = localfont({
   src: [
     {
       path: "../../public/xeroda-font/XerodaRegular-p7dwr.otf",
-      
-    }
+    },
   ],
-  variable: "--font-xeroda"
-})
+  variable: "--font-xeroda",
+});
 
 export const metadata: Metadata = {
   title: "Decoding The Future",
@@ -33,7 +32,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${xeroda.variable} ${montserrat.className}`}>{children}</body>
+      <body className={`${xeroda.variable} ${montserrat.className}`}>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }

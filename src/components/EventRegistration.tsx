@@ -1,5 +1,5 @@
 "use client";
-import { FormEvent, useState } from "react";
+import { FormEvent, FormEventHandler, useState } from "react";
 import InputBox from "./InputBox";
 
 export default function EventRegistration() {
@@ -7,37 +7,46 @@ export default function EventRegistration() {
   const [email, setEmail] = useState("");
   const [tel, setTel] = useState("");
 
-  const register = async (e: FormEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+  const register = async () => {
+    const formData = {
+      name,
+      email,
+      phone: tel,
+    };
 
-    // const formData = {
-    //   name,
-    //   email,
-    //   phone: tel,
-    // };
+    console.log(formData);
 
-    // try {
-    //   const response = await fetch("", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(formData),
-    //   });
+    try {
+      const response = await fetch(
+        "https://api.decodingthefuture.xyz/api/v1/event-registration/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
-    //   if (!response.ok) {
-    //     throw new Error(`HTTP error status: ${response.status}`);
-    //   }
+      if (!response.ok) {
+        throw new Error(`HTTP error status: ${response.status}`);
+      }
 
-    //   const result = await response.json();
-    //   console.log(result);
-    // } catch (error) {
-    //   console.log("Error:", error);
-    // }
+      const result = await response.json();
+      console.log(result);
+    } catch (error) {
+      console.log("Error:", error);
+    }
   };
 
   return (
-    <form className="w-[291px] mx-auto lg:mx-0">
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        register();
+      }}
+      className="w-[291px] mx-auto lg:mx-0"
+    >
       <InputBox
         type="text"
         placeholder="Name"
@@ -57,7 +66,7 @@ export default function EventRegistration() {
         onChange={(newValue: string) => setTel(newValue)}
       />
       <button
-        onSubmit={register}
+        type="submit"
         className="w-full p-3 bg-[#16A0FF] text-white font-medium rounded-lg"
       >
         Join Us
