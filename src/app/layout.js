@@ -46,7 +46,7 @@ export default function RootLayout({ children }) {
         <meta name="twitter:image" content="https://pbs.twimg.com/profile_images/1794030166236090368/g5Sl3KvE_400x400.jpg" />
         <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"/>
       </head>
-      <body className={`${xeroda.variable} ${montserrat.className}`}>
+      <body className={`${xeroda.variable} ${montserrat.className} h-full`}>
         <Navbar />
         {children}
       </body>

@@ -10,7 +10,7 @@ export default function InputBox({ type, placeholder, value, onChange }: TInput)
     <>
       <input
         type={type}
-        className="border rounded-lg mb-3 border-[#8A8A8A] text-white outline-none bg-[#FFFFFF1A] p-3 w-full"
+        className="border rounded-lg border-[#8A8A8A] text-white outline-none bg-[#FFFFFF1A] p-3 w-full"
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}

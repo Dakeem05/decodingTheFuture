@@ -6,6 +6,8 @@ body {
   background: linear-gradient(120.52deg, #0F1141 1%, #272CA7 100%);
   background-repeat: no-repeat;
   height: 100%;
+  min-height: 100vh;
+  background-color: black;
 }
 
 @layer base {
