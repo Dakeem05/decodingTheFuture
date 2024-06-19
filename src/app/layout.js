@@ -36,14 +36,14 @@ export default function RootLayout({ children }) {
         <title>Decoding The Future</title>
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://decodingthefuture.xyz" />
-        <meta property="og:title" content="Compad | Private Sale" />
-        <meta property="og:description" content="Compad private sale website" />
-        <meta property="og:image" content="https://pbs.twimg.com/profile_images/1685353964450004993/7q2iSxcW_400x400.jpg" />
+        <meta property="og:title" content="Decoding The Future" />
+        <meta property="og:description" content="Decoding The Future event held by FACOSA" />
+        <meta property="og:image" content="https://pbs.twimg.com/profile_images/1794030166236090368/g5Sl3KvE_400x400.jpg" />
         <meta name="twitter:card" content="Decoding The Future event held by FACOSA" />
-        <meta name="twitter:url" content="https://x.com/Compadofficial?t=O7E36yY3IgiypnzQ9f9MwQ&s=09" />
-        <meta name="twitter:title" content="Compad | Private Sale" />
-        <meta name="twitter:description" content="Compad private sale website" />
-        <meta name="twitter:image" content="https://pbs.twimg.com/profile_images/1685353964450004993/7q2iSxcW_400x400.jpg" />
+        <meta name="twitter:url" content="https://x.com/Focosauniuyo" />
+        <meta name="twitter:title" content="Decoding The Future" />
+        <meta name="twitter:description" content="Decoding The Future event held by FACOSA" />
+        <meta name="twitter:image" content="https://pbs.twimg.com/profile_images/1794030166236090368/g5Sl3KvE_400x400.jpg" />
         <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"/>
       </head>
       <body className={`${xeroda.variable} ${montserrat.className}`}>
