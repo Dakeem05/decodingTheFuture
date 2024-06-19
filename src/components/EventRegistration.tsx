@@ -21,22 +21,25 @@ export default function EventRegistration() {
         "https://api.decodingthefuture.xyz/api/v1/event-registration/register",
         {
           method: "POST",
+          mode: "cors",
           headers: {
             "Content-Type": "application/json",
+            "X-PINGOTHER": "pingpong",
           },
           body: JSON.stringify(formData),
         }
       );
 
-      if (!response.ok) {
+        if (!response.ok) {
+        console.error(`HTTP error res: ${await response.text()}`);
         throw new Error(`HTTP error status: ${response.status}`);
-        throw new Error(`HTTP error messa: ${response.json()}`);
-      }
-
-      const result = await response.json();
-      console.log(result);
-    } catch (error) {
-      console.log("Error:", error);
+        }
+        
+        const result = await response.json();
+        console.log(result);
+      } catch (error) {
+        console.error(`HTTP error messa: ${error}`);
+        console.log("Error:", error);
     }
   };
 
