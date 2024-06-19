@@ -6,47 +6,20 @@ export default function EventRegistration() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [tel, setTel] = useState("");
-  const [errors, setErrors] = useState({
-    name: "",
-    email: "",
-    tel: "",
-  });
-
-  const validateInputs = () => {
-    let tempErrors = {
-      name: "",
-      email: "",
-      tel: "",
-    };
-
-    if (!name.trim()) {
-      tempErrors.name = "Name is required.";
-    }
-    if (!/\S+@\S+\.\S+/.test(email)) {
-      tempErrors.email = "Email is not valid.";
-    }
-    if (!/^\+?\d{6,15}$/.test(tel)) {
-      tempErrors.tel = "Phone number is not valid.";
-    }
-
-    setErrors(tempErrors);
-  };
+  const [nameError, setNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [telError, setTelError] = useState("");
 
   const register = async () => {
-    validateInputs();
-
-    if (Object.keys(errors).length > 0) {
-      console.log("Validation errors:", errors);
-      return;
-    }
+    setNameError("");
+    setEmailError("");
+    setTelError("");
 
     const formData = {
       name,
       email,
       phone: tel,
     };
-
-    console.log(formData);
 
     try {
       const response = await fetch(
@@ -62,16 +35,24 @@ export default function EventRegistration() {
         }
       );
 
-        if (!response.ok) {
-        console.error(`HTTP error res: ${await response.text()}`);
-        throw new Error(`HTTP error status: ${response.status}`);
-        }
+      if (!response.ok) {
+        const errorResponse = await response.json();
+        const errorMessage = `HTTP error status: ${
+          response.status
+        }, Message: ${JSON.stringify(errorResponse.data)}`;
         
-        const result = await response.json();
-        console.log(result);
-      } catch (error) {
-        console.error(`HTTP error messa: ${error}`);
-        console.log("Error:", error);
+        if (errorResponse.data.name) setNameError(errorResponse.data.name[0]);
+        if (errorResponse.data.email)
+          setEmailError(errorResponse.data.email[0]);
+        if (errorResponse.data.phone) setTelError(errorResponse.data.phone[0]);
+
+        throw new Error(errorMessage);
+      }
+
+      const result = await response.json();
+      console.log(result);
+    } catch (error: any) {
+      console.error(error);
     }
   };
 
@@ -92,7 +73,7 @@ export default function EventRegistration() {
             setName(newValue);
           }}
         />
-        {errors.name && <p className="text-red-500">{errors.name}</p>}
+        {nameError && <p className="text-red-500">{nameError}</p>}
       </div>
 
       <div className="mb-3">
@@ -104,7 +85,7 @@ export default function EventRegistration() {
             setEmail(newValue);
           }}
         />
-        {errors.email && <p className="text-red-500">{errors.email}</p>}
+        {emailError && <p className="text-red-500">{emailError}</p>}
       </div>
 
       <div className="mb-3">
@@ -116,7 +97,7 @@ export default function EventRegistration() {
             setTel(newValue);
           }}
         />
-        {errors.tel && <p className="text-red-500">{errors.tel}</p>}
+        {telError && <p className="text-red-500">{telError}</p>}
       </div>
 
       <button
