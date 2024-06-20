@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google";
 import localfont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import { GlobalStateProvider } from "@/context/GlobalStateContext";
 
 const montserrat = Montserrat({
   weight: ["300", "400", "500", "700"],
@@ -46,9 +47,10 @@ export default function RootLayout({ children }) {
         <meta name="twitter:image" content="https://pbs.twimg.com/profile_images/1794030166236090368/g5Sl3KvE_400x400.jpg" />
         <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"/>
       </head>
-      <body className={`${xeroda.variable} ${montserrat.className} h-full`}>
-        <Navbar />
+      <body className={`${xeroda.variable} ${montserrat.className} h-full relative`}>
+      <GlobalStateProvider>
         {children}
+        </GlobalStateProvider>
       </body>
     </html>
   );

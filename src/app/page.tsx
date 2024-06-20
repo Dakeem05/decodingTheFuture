@@ -1,13 +1,22 @@
 /* eslint-disable @next/next/no-img-element */
+"use client";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import EventRegistration from "@/components/EventRegistration";
 import Link from "next/link";
+import VerifyOTP from "@/components/VerifyOTP";
+import Image from "next/image";
+import { useGlobalState } from "@/context/GlobalStateContext";
 
 export default function Home() {
+  const { isNotVerified } = useGlobalState();
+
   return (
-    <main className="h-full lg:px-3 xl:px-0 max-w-[1100px] mobile-bg mx-auto">
-      <div className="backdrop-blur-md lg:backdrop-blur-0">
+    <main className=" lg:px-3 xl:px-0 max-w-[1100px] mobile-bg mx-auto">
+      <div className="backdrop-blur-md min-h-screen lg:backdrop-blur-0">
+        <header className="py-3 px-3 lg:px-0">
+          <Image src="/assets/logo.svg" alt="logo" width={223} height={60} />
+        </header>
         <div className="flex items-center md:pt-0 lg:justify-center lg:mt-10">
           <div className="h-full flex items-center justify-center">
             <div className="py-5 px-3 lg:px-0">
@@ -21,7 +30,9 @@ export default function Home() {
                 workshops and conference on AI/XR & IoT, Blockchain,
                 Cybersecurity, Career & Finance.
               </p>
-              <EventRegistration />
+
+              {isNotVerified ? <VerifyOTP /> : <EventRegistration />}
+
               <div className="text-white mt-10 flex items-center space-x-5 w-max lg:w-full mx-auto lg:mx-0">
                 <Link
                   href="https://web.facebook.com/profile.php?id=61556141437339"

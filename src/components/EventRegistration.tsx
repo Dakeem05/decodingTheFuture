@@ -1,6 +1,9 @@
 "use client";
 import { FormEvent, FormEventHandler, useState } from "react";
 import InputBox from "./InputBox";
+import { useRouter } from "next/navigation";
+import { useGlobalState } from "@/context/GlobalStateContext";
+import Spinner from "./Spinner";
 
 export default function EventRegistration() {
   const [name, setName] = useState("");
@@ -9,11 +12,15 @@ export default function EventRegistration() {
   const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [telError, setTelError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const { setIsNotVerified } = useGlobalState();
 
   const register = async () => {
     setNameError("");
     setEmailError("");
     setTelError("");
+
+    setLoading(true);
 
     const formData = {
       name,
@@ -40,7 +47,7 @@ export default function EventRegistration() {
         const errorMessage = `HTTP error status: ${
           response.status
         }, Message: ${JSON.stringify(errorResponse.data)}`;
-        
+
         if (errorResponse.data.name) setNameError(errorResponse.data.name[0]);
         if (errorResponse.data.email)
           setEmailError(errorResponse.data.email[0]);
@@ -50,9 +57,13 @@ export default function EventRegistration() {
       }
 
       const result = await response.json();
-      console.log(result);
+
+      sessionStorage.setItem("emailToVerify", email);
+      setIsNotVerified(true);
+      setLoading(false);
     } catch (error: any) {
       console.error(error);
+      setLoading(false);
     }
   };
 
@@ -104,7 +115,7 @@ export default function EventRegistration() {
         type="submit"
         className="w-full p-3 bg-[#16A0FF] text-white font-medium rounded-lg"
       >
-        Join Us
+        {loading ? <Spinner /> : "Join Us"}
       </button>
     </form>
   );
