@@ -11,6 +11,7 @@ export default function VerifyOTP() {
   let email = sessionStorage.getItem("emailToVerify");
   const [otp, setOtp] = useState("");
   const { setIsNotVerified } = useGlobalState();
+  const { setIsRegistered } = useGlobalState();
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -48,7 +49,8 @@ export default function VerifyOTP() {
       sessionStorage.clear();
 
       if (result.success) {
-        router.push("/successful");
+        setIsRegistered(true);
+        // router.push("/successful");
       }
 
       setIsNotVerified(false);
@@ -111,14 +113,14 @@ export default function VerifyOTP() {
           renderInput={(props) => <input {...props} />}
         />
 
-        <div className="flex mt-2 space-x-1 items-center justify-end text-white text-sm">
+        <div className="flex mt-2 space-x-1 items-center w-fit mx-auto text-white text-sm">
           <p>Didn&apos;t get the code? </p>{" "}
           <button
             onClick={(e) => {
               e.preventDefault();
               resendOTP();
             }}
-            className="text-[#16A0FF]"
+            className="text-[#16A0FF] ml-0"
           >
             Resend
           </button>

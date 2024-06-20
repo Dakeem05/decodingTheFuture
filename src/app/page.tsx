@@ -5,11 +5,13 @@ import { BsTwitterX } from "react-icons/bs";
 import EventRegistration from "@/components/EventRegistration";
 import Link from "next/link";
 import VerifyOTP from "@/components/VerifyOTP";
+import Successful from "@/components/Successful";
 import Image from "next/image";
 import { useGlobalState } from "@/context/GlobalStateContext";
 
 export default function Home() {
   const { isNotVerified } = useGlobalState();
+  const { isRegistered } = useGlobalState();
 
   return (
     <main className=" lg:px-3 xl:px-0 max-w-[1100px] mobile-bg mx-auto">
@@ -31,7 +33,7 @@ export default function Home() {
                 Cybersecurity, Career & Finance.
               </p>
 
-              {isNotVerified ? <VerifyOTP /> : <EventRegistration />}
+              {isRegistered ? <Successful/> : (isNotVerified ? <VerifyOTP /> : <EventRegistration />)}
 
               <div className="text-white mt-10 flex items-center space-x-5 w-max lg:w-full mx-auto lg:mx-0">
                 <Link
