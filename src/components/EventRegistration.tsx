@@ -30,7 +30,7 @@ export default function EventRegistration() {
 
     try {
       const response = await fetch(
-        "https://api.decodingthefuture.xyz/api/v1/event-registration/register",
+        "https://backend.decodingthefuture.xyz/api/v1/event-registration/register",
         {
           method: "POST",
           mode: "cors",

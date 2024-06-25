@@ -36,7 +36,7 @@ export const GlobalStateProvider: React.FC<{ children: ReactNode }> = ({
       setIsLoading(true);
       try {
         const response = await fetch(
-          "https://api.decodingthefuture.xyz/api/v1/event-registration/count"
+          "https://backend.decodingthefuture.xyz/api/v1/event-registration/count"
         );
 
         if (!response.ok) throw new Error("Network response was not ok");

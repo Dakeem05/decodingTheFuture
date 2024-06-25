@@ -24,7 +24,7 @@ export default function VerifyOTP() {
 
     try {
       const response = await fetch(
-        "https://api.decodingthefuture.xyz/api/v1/event-registration/verify",
+        "https://backend.decodingthefuture.xyz/api/v1/event-registration/verify",
         {
           method: "POST",
           mode: "cors",
@@ -64,7 +64,7 @@ export default function VerifyOTP() {
   const resendOTP = async () => {
     try {
       const response = await fetch(
-        `https://api.decodingthefuture.xyz/api/v1/event-registration/resend/${email}`,
+        `https://backend.decodingthefuture.xyz/api/v1/event-registration/resend/${email}`,
         {
           method: "GET",
           mode: "cors",
